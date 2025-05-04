@@ -8,17 +8,17 @@ def SalesmanTrackBacktracking(g,visits):
     track = graph.Track(g) 
     
     start = visits.Vertices[0]
-    end = visits.Vertices[-1]
+    #end = visits.Vertices[-1]
     list_nodes = []
     #min_dist = sys.float_info.max
     
     sol = [[], sys.float_info.max]
     
-    RecBacktracking(sol, start, [], list_nodes, end, 0, visits)
+    RecBacktracking(sol, start, [], list_nodes, 0, visits)
     track.Edges.extend(sol[0])
     return track
     
-def RecBacktracking(solution, vertex_actual, path_actual, list_nodes, end, dist_actual, visits):
+def RecBacktracking(solution, vertex_actual, path_actual, list_nodes, dist_actual, visits):
     #n = vertex_actual.Name
     list_nodes.append(vertex_actual)
     
@@ -45,7 +45,7 @@ def RecBacktracking(solution, vertex_actual, path_actual, list_nodes, end, dist_
             #v = vertex_next.Name
             path_actual.append(edge)
             
-            sol = RecBacktracking(solution, vertex_next, path_actual, list_nodes, end, dist_actual+edge.Length, visits)
+            sol = RecBacktracking(solution, vertex_next, path_actual, list_nodes, dist_actual+edge.Length, visits)
             
             if sol is not None:     
                 solution[0] = sol[0]
