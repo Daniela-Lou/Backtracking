@@ -28,15 +28,22 @@ def RecBacktracking(solution, vertex_actual, path_actual, list_nodes, dist_actua
         list_nodes.pop()
         return  
     
-    tots = True
-    for v in visits.Vertices: 
-        if v not in list_nodes: 
-            tots = False
+    #tots = True
+    #for v in visits.Vertices: 
+    #    if v not in list_nodes: 
+    #        tots = False
     
-    if vertex_actual == visits.Vertices[-1] and tots == True: #Solució
-        solution = list(path_actual)
-        list_nodes.pop()
-        return solution, dist_actual
+    if vertex_actual == visits.Vertices[-1]: #and tots == True: #Solució
+        tots = True
+        for v in visits.Vertices: 
+            if v not in list_nodes: 
+                tots = False
+                
+        if tots == True:
+            solution = list(path_actual)
+            list_nodes.pop()
+            return solution, dist_actual
+        
     
     vertex_next = None
     for edge in vertex_actual.Edges: 
