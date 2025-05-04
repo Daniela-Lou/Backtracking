@@ -20,7 +20,7 @@ def SalesmanTrackBacktracking(g,visits):
 
     
 def RecBacktracking(solution, vertex_actual, path_actual, list_nodes, dist_actual, visits):
-    #n = vertex_actual.Name
+    #n = vertex_actual.Name PRUEBA
     
     list_nodes.append(vertex_actual)
     
@@ -28,14 +28,14 @@ def RecBacktracking(solution, vertex_actual, path_actual, list_nodes, dist_actua
         list_nodes.pop()
         return  
     
-    if vertex_actual == visits.Vertices[-1]: #and tots == True: #Solució
+    if vertex_actual == visits.Vertices[-1]: #Vértex final
         tots = True
         
         for v in visits.Vertices: 
             if v not in list_nodes: 
                 tots = False
                 
-        if tots == True:
+        if tots == True: #Solució
             solution = list(path_actual)
             list_nodes.pop()
             return solution, dist_actual
@@ -47,8 +47,8 @@ def RecBacktracking(solution, vertex_actual, path_actual, list_nodes, dist_actua
             edge.Saved = True
             vertex_next = edge.Destination
             
-            #e = edge.Name
-            #v = vertex_next.Name
+            #e = edge.Name PRUEBA
+            #v = vertex_next.Name PRUEBA
             
             path_actual.append(edge)
             sol = RecBacktracking(solution, vertex_next, path_actual, list_nodes, dist_actual+edge.Length, visits)
@@ -61,7 +61,7 @@ def RecBacktracking(solution, vertex_actual, path_actual, list_nodes, dist_actua
             edge.Saved = False
             
     list_nodes.pop()    
-    return 
+    #return 
 
 # ==============================================================================
 
