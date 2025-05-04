@@ -6,17 +6,16 @@ import dijkstra
 
 def SalesmanTrackBacktracking(g,visits):
     track = graph.Track(g) 
+    
     start = visits.Vertices[0]
     end = visits.Vertices[-1]
-    
     list_nodes = []
-    min_dist = sys.float_info.max
+    #min_dist = sys.float_info.max
     
-    sol = [[], min_dist]
+    sol = [[], sys.float_info.max]
     
     RecBacktracking(sol, start, [], list_nodes, end, 0, visits)
     track.Edges.extend(sol[0])
-    #print(sol[1])
     return track
     
 def RecBacktracking(solution, vertex_actual, path_actual, list_nodes, end, dist_actual, visits):
@@ -32,7 +31,7 @@ def RecBacktracking(solution, vertex_actual, path_actual, list_nodes, end, dist_
         if v not in list_nodes: 
             tots = False
     
-    if vertex_actual == end and tots == True: #Solució
+    if vertex_actual == visits.Vertices[-1] and tots == True: #Solució
         solution = list(path_actual)
         list_nodes.pop()
         return solution, dist_actual
