@@ -7,19 +7,21 @@ import dijkstra
 def SalesmanTrackBacktracking(g,visits):
     track = graph.Track(g) 
     
-    start = visits.Vertices[0]
-    #end = visits.Vertices[-1]
+    #start = visits.Vertices[0]
     list_nodes = []
-    #min_dist = sys.float_info.max
     
     sol = [[], sys.float_info.max]
     
-    RecBacktracking(sol, start, [], list_nodes, 0, visits)
+    RecBacktracking(sol, visits.Vertices[0], [], list_nodes, 0, visits)
+    
     track.Edges.extend(sol[0])
+    
     return track
+
     
 def RecBacktracking(solution, vertex_actual, path_actual, list_nodes, dist_actual, visits):
     #n = vertex_actual.Name
+    
     list_nodes.append(vertex_actual)
     
     if dist_actual >= solution[-1]: #Cami actual més gran que solució anterior
