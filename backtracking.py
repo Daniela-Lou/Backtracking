@@ -28,13 +28,9 @@ def RecBacktracking(solution, vertex_actual, path_actual, list_nodes, dist_actua
         list_nodes.pop()
         return  
     
-    #tots = True
-    #for v in visits.Vertices: 
-    #    if v not in list_nodes: 
-    #        tots = False
-    
     if vertex_actual == visits.Vertices[-1]: #and tots == True: #Solució
         tots = True
+        
         for v in visits.Vertices: 
             if v not in list_nodes: 
                 tots = False
@@ -43,17 +39,18 @@ def RecBacktracking(solution, vertex_actual, path_actual, list_nodes, dist_actua
             solution = list(path_actual)
             list_nodes.pop()
             return solution, dist_actual
-        
     
-    vertex_next = None
+    #vertex_next = None
+    
     for edge in vertex_actual.Edges: 
         if edge.Saved == False: 
             edge.Saved = True
             vertex_next = edge.Destination
+            
             #e = edge.Name
             #v = vertex_next.Name
-            path_actual.append(edge)
             
+            path_actual.append(edge)
             sol = RecBacktracking(solution, vertex_next, path_actual, list_nodes, dist_actual+edge.Length, visits)
             
             if sol is not None:     
